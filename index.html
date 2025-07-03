@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Mercy!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #ffe4e1, #ffb6c1);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/fancy-deboss.png');
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      color: #ff1493;
+      margin-top: 60px;
+      z-index: 2;
+      position: relative;
+    }
+    .hero {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #d62828; /* Christmas red */
+      color: #fff;
+      border-radius: 20px;
+      z-index: 2;
+      position: relative;
+    }
+    .hero img {
+      max-width: 100%;
+      height:fit-content;
+      border-radius: 30px;
+      size: 0cqb;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .section {
+      margin: 40px 20px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 2;
+      position: relative;
+    }
+    .section:nth-child(even) {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+    }
+    .section:nth-child(odd) {
+      background: #ffccd5; /* Soft pink */
+      color: #333;
+    }
+    .section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin-top: 15px;
+    }
+    .section h2 {
+      font-family: 'Pacifico', cursive;
+      color: inherit;
+      margin-bottom: 10px;
+    }
+    .section p {
+      font-size: 1.2em;
+      color: inherit;
+    }
+    footer {
+      background: #ff1493;
+      color: white;
+      padding: 20px;
+      font-size: 1.1em;
+      margin-top: 50px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <audio id="birthday" autoplay loop>
+    <source src="audio/birthday.mp3.mp3birthday.mp3" type="audio/mpeg">
+    <source src="audio/birthday.ogg.ogg" type="audio/ogg">
+    Your browser does not support HTML5 audio. 
+    <a href="audio/birthday.mp3.mp3" download>Click here to download the song</a>.
+  </audio>
+
+  <canvas class="snow"></canvas>
+
+  <h1>🎉 Happy Birthday Onakoya Mercy Oluwatosin! 🎂</h1>
+
+  <div class="hero">
+    <img src="images/mercy1.jpg" alt="Mercy Birthday Hero Image 1">
+    <img src="images/mercy3.jpg" alt="Mercy Birthday Hero Image 2">
+  </div>
+
+  <div class="section">
+    <h2>🌸 A Wish Just for You</h2>
+    <p>Wishing you a day filled with laughter, joy, and all the love your heart can hold. You are truly one of a kind, Mercy Oluwatosin!</p>
+    <img src="images/mercy4.jpg" alt="Birthday Wish Image 1">
+  </div>
+
+  <div class="section">
+    <h2>💖 Precious Memories</h2>
+    <p>From our hearts to yours, may this birthday mark the beginning of an extraordinary year full of grace, blessings, and answered prayers!</p>
+    <img src="images/mercy2.jpg" alt="Birthday Wish Image 2">
+  </div>
+
+  <div class="section">
+    <h2>🎁 Special Moments</h2>
+    <p>Enjoy every second, every gift, every smile. Today is yours to sparkle! Keep being amazing.</p>
+    <img src="images/mercy1.jpg" alt="Birthday Wish Image 3">
+  </div>
+
+  <footer>
+    Made with ❤️ just for you, Mercy Oluwatosin. Happy Birthday Again!
+  </footer>
+
+  <script>
+    const audio = document.getElementById('birthdayAudio');
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.addEventListener('click', () => {
+        audio.play().catch(err => console.log('Audio play blocked:', err));
+      });
+    });
+
+    const canvas = document.querySelector('.snow');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    let snowflakes = [];
+
+    function createSnowflakes() {
+      for (let i = 0; i < 100; i++) {
+        snowflakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 4 + 1,
+          speedY: Math.random() * 1 + 0.5,
+          speedX: Math.random() * 0.5 - 0.25
+        });
+      }
+    }
+
+    function drawSnowflakes() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.beginPath();
+      for (let flake of snowflakes) {
+        ctx.moveTo(flake.x, flake.y);
+        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+      }
+      ctx.fill();
+      moveSnowflakes();
+    }
+
+    function moveSnowflakes() {
+      for (let flake of snowflakes) {
+        flake.y += flake.speedY;
+        flake.x += flake.speedX;
+        if (flake.y > height) {
+          flake.y = 0;
+          flake.x = Math.random() * width;
+        }
+      }
+    }
+
+    function animateSnow() {
+      drawSnowflakes();
+      requestAnimationFrame(animateSnow);
+    }
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    createSnowflakes();
+    animateSnow();
+  </script>
+  <br>
+  <p style="text-align: center; font-size: 1em; font-weight: 600; color: white; background-color: #6a5acd; padding: 10px 15px; border-radius: 10px; margin-top: 15px;">
+    Courtesy: <strong>Aytech (cousin)</strong>. &copy; 2025
+  </p>
+  
+</body>
+</html>
